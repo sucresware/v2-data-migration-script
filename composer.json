@@ -1,0 +1,43 @@
+{
+    "name": "sucresware/v2-data-migration-script",
+    "description": "Script to migrate data from 4sucres v1 to the future v2.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Rubuano",
+            "email": "sr@mgk.dev"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/database": "^8.0",
+        "laravel-zero/framework": "^8.0",
+        "spatie/regex": "^1.4"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.9",
+        "mockery/mockery": "^1.4.2",
+        "pestphp/pest": "^0.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "bin": [
+        "v2-data-migration-script"
+    ]
+}
