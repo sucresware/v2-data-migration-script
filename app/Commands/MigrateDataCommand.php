@@ -30,21 +30,21 @@ class MigrateDataCommand extends Command
                 'bans',
                 'failed_jobs',
                 'firewall',
-                'has_read_discussions_users',
                 'notifications',
                 'post_reaction_user',
                 'reactions',
                 'roles',
-                'subscribed_discussions_users',
                 'user_achievement',
                 'users',
-                'users_discussions',
             ])->each(fn ($table) => $this->copy($table));
 
             collect([
                 'categories' => 'boards',
                 'discussions' => 'threads',
                 'posts' => 'replies',
+                'has_read_discussions_users' => 'has_read_threads_users',
+                'subscribed_discussions_users' => 'subscribed_threads_users',
+                'users_discussions' => 'users_threads',
             ])->each(fn ($new_table, $table) => $this->copy($table, $new_table));
         });
 
@@ -235,6 +235,9 @@ class MigrateDataCommand extends Command
                 unset($row->category_id);
                 break;
             case 'replies':
+            case 'has_read_threads_users':
+            case 'subscribed_threads_users':
+            case 'users_threads':
                 $row->thread_id = $row->discussion_id;
                 unset($row->discussion_id);
                 break;
